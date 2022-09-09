@@ -13,29 +13,74 @@
     <title>Fetch</title>
     </head>
     <body>
-        <div class="container my-5">
-            <!-- spinner loading -->
-            <section class="d-flex align-items-center d-none" id="loading">
-                <strong>Loading...</strong>
-                <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
-            </section>
 
-            <!-- card-dinamica -->
-            <section class="row" id="cardDinamica"></section>
+        <div class="container my-4">
+            <h1>Estudiantes y Profesores</h1>
 
+            <div class="alert alert-danger my-2 d-none" role="alert">
+                Todos los campos son obligatorios
+            </div>
+
+            <form id="formulario">
+                <input
+                    class="form-control mb-2"
+                    name="nombre"
+                    placeholder="Ingrese nombre"
+                    type="text"
+                    required
+                    value="Lucas"
+                />
+                <input
+                    class="form-control mb-2"
+                    name="edad"
+                    placeholder="Ingrese su edad"
+                    type="number"
+                    required
+                    value="23"
+                />
+                <select class="form-select mb-2" name="opcion" aria-label="Default select example">
+                    <option value="Estudiante" selected>Estudiante</option>
+                    <option value="Profesor">Profesor</option>
+                </select>
+
+                <button class="btn btn-primary" type="submit">Agregar</button>
+
+            </form>
+
+                <section class="row mt-3">
+
+                    <div class="col-6" id="cardEstudiantes"></div>
+
+                    <div class="col-6" id="cardProfesores"></div>
+
+                </section>
         </div>
 
-        <template id="cardTemplate">
-            <article class="col-12 col-md-6 col-lg-3 mb-3">
-                <div class="card text-center shadow">
-                    <img src="" alt="" class="card-img-top">
+            <template id="templateEstudiantes">
+                <article class="card mb-2"> <!-- Esto es lo que vamos a multiplicar -->
                     <div class="card-body">
-                        <h5 class="card-title text-primary lead"></h5>
-                        <p class="lead text-secondary mb-2"></p>
+                        <h5>
+                            <span class="text-primary">Nombre</span>
+                            <span class="badge bg-success">Aprobado</span>
+                        </h5>
+                        <h6></h6>
+                        <p class="lead">Edad</p>
+                        <button class="btn btn-success">Aprobado</button>
+                        <button class="btn btn-danger">Desaprobado</button>
                     </div>
-                </div>
-            </article>
-        </template>
-    <script src="./dimanico.js"></script>
+                </article>
+            </template>
+
+            <template id="templateProfesores">
+                <article class="card mb-2 bg-dark text-white">
+                    <div class="card-body">
+                        <h5>Nombre profesor</h5>
+                        <h6>Profesor</h6>
+                        <p class="lead">Edad</p>
+                    </div>
+                </article>
+            </template>  
+
+    <script src="./app.js"></script>
     </body>
 </html>
