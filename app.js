@@ -8,6 +8,10 @@ const $templateProfesores = document.querySelector('#templateProfesores').conten
 
 //alert
 const $alert = document.querySelector('.alert');
+//validacion formulario name
+const regUserName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
+//validacion formulario edad
+const regUserAge = /[0-9]/; 
 
 document.addEventListener('click', e =>{
     if(e.target.dataset.uid ){
@@ -129,12 +133,12 @@ $formulario.addEventListener('submit', e=>{
 
     const [nombre, edad, opcion] = [...data.values()] 
 
-    if(!nombre.trim() || !edad.trim() || !opcion.trim()){
+    if(!nombre.trim()|| !edad.trim() || !opcion.trim()){
         $alert.classList.remove('d-none');
         return;
     }    
 
-    if(opcion === "Estudiante"){
+    if(opcion === "Estudiante" && regUserName.test(nombre)){
         const estudiante = new Estudiante(nombre, edad);
 
         estudiantes.push(estudiante);
@@ -142,7 +146,7 @@ $formulario.addEventListener('submit', e=>{
         Persona.pintarPersonaIU(estudiantes, opcion);
     }
 
-    if(opcion === "Profesor"){
+    if(opcion === "Profesor" && regUserName.test(nombre)){
         const profesor = new Profesor(nombre, edad);
 
         profesores.push(profesor);
